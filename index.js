@@ -1,3 +1,8 @@
+// $(document).ready(function() {
+// });
+
+
+
 function preventRefreshOnSubmit(){
     document.querySelector('form').addEventListener('submit', function(event){
       event.preventDefault()
@@ -5,3 +10,29 @@ function preventRefreshOnSubmit(){
 }
 
 preventRefreshOnSubmit()
+
+
+
+function retrieveEmployeeInformation(){
+  return document.querySelector('input').value
+}
+
+
+function addNewElementAsLi(){
+  let employeeName = retrieveEmployeeInformation()
+  document.querySelector('.employee-list').insertAdjacentHTML('beforeend', `<li>${employeeName}</li>`)
+}
+
+function addNewLiOnClick(){
+  let submit = document.querySelector('input[type="submit"]')
+  submit.addEventListener('click', function(event){
+    addNewElementAsLi(event)
+    document.querySelector('input[type="text"]').value = '';
+  })
+}
+
+function clearEmployeeListOnLinkClick(){
+  document.querySelector('a').addEventListener('click', function(e){
+    document.querySelector('.employee-list').innerHTML = ''
+   })
+}
